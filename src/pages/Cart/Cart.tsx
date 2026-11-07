@@ -120,19 +120,12 @@ const Cart = () => {
 					quantity: count,
 				})),
 			});
-			if (orderResponse.isAccepted) {
-				window.alert(
-					`주문이 완료되었습니다.\n결제금액 ${orderResponse.totalPrice.toLocaleString()}원`,
-				);
-				clearCart();
-				clearOrderDeadline();
-				navigate("/");
-				return;
-			}
-
 			window.alert(
-				`주문이 접수되지 않았어요.\n결제금액 ${orderResponse.totalPrice.toLocaleString()}원`,
+				`주문이 완료되었습니다.\n결제금액 ${orderResponse.totalPrice.toLocaleString()}원`,
 			);
+			clearCart();
+			clearOrderDeadline();
+			navigate("/");
 		} catch (requestError) {
 			if (
 				requestError instanceof OrderApiError &&
