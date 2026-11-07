@@ -81,6 +81,10 @@ const Cart = () => {
 		navigate("/store");
 	};
 
+	const handleAddMore = () => {
+		navigate(storeId === null ? "/store" : `/store/${storeId}`);
+	};
+
 	const deliveryFee = store?.deliveryFee ?? 0;
 	const totalPrice = orderPrice + deliveryFee;
 	const minDeliveryPrice = store?.minDeliveryPrice ?? 0;
@@ -114,7 +118,7 @@ const Cart = () => {
 					quantity: count,
 				})),
 			});
-			const acceptanceMessage = orderResponse.accepted
+			const acceptanceMessage = orderResponse.isAccepted
 				? "주문이 접수되었어요."
 				: "주문이 접수되지 않았어요.";
 
@@ -160,6 +164,7 @@ const Cart = () => {
 				isMinimumMet={isMinimumMet}
 				onIncrease={increaseMenu}
 				onDecrease={decreaseMenu}
+				onAddMore={handleAddMore}
 			/>
 
 			<CartPrice

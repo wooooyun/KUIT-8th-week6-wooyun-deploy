@@ -9,6 +9,6 @@ export interface OrderMenuRequest {
 }
 
 export interface OrderMenuResponse {
-	accepted: boolean;
+	isAccepted: boolean;
 	totalPrice: number;
 }
